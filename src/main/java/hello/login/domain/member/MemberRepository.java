@@ -1,5 +1,7 @@
 package hello.login.domain.member;
 
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicLong;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
 
@@ -9,11 +11,11 @@ import java.util.*;
 @Repository
 public class MemberRepository {
 
-    private static Map<Long, Member> store = new HashMap<>(); //static 사용
-    private static long sequence = 0L;//static 사용
+    private static ConcurrentHashMap<Long, Member> store = new ConcurrentHashMap<>();
+    private static AtomicLong sequence = new AtomicLong();//static 사용
 
     public Member save(Member member) {
-        member.setId(++sequence);
+        member.setId(sequence.incrementAndGet());
         log.info("save: member={}", member);
         store.put(member.getId(), member);
         return member;

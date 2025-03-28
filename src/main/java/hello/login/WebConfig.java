@@ -38,23 +38,24 @@ public class WebConfig implements WebMvcConfigurer {
                         "/css/**", "/*.ico", "/error");
     }
 
-    @Bean
+    //    @Bean
     public FilterRegistrationBean logFilter() {
-        FilterRegistrationBean<Filter> filterRegistrationBean = new FilterRegistrationBean<>();
-        filterRegistrationBean.setFilter(new LogFilter());
-        filterRegistrationBean.setOrder(1);
-        filterRegistrationBean.addUrlPatterns("/*");
+        FilterRegistrationBean<Filter> filterFilterRegistrationBean = new FilterRegistrationBean<>();
+        filterFilterRegistrationBean.setFilter(new LogFilter());
+        filterFilterRegistrationBean.setOrder(1);
+        filterFilterRegistrationBean.addUrlPatterns("/*");
 
-        return filterRegistrationBean;
+        return filterFilterRegistrationBean;
     }
 
-//    @Bean
+    //    @Bean
     public FilterRegistrationBean loginCheckFilter() {
-        FilterRegistrationBean<Filter> filterRegistrationBean = new FilterRegistrationBean<>();
-        filterRegistrationBean.setFilter(new LoginCheckFilter());
-        filterRegistrationBean.setOrder(2);
-        filterRegistrationBean.addUrlPatterns("/*");
+        FilterRegistrationBean<Filter> filterFilterRegistrationBean = new FilterRegistrationBean<>();
+        filterFilterRegistrationBean.setFilter(new LoginCheckFilter());
+        filterFilterRegistrationBean.setOrder(2);
+        filterFilterRegistrationBean.addUrlPatterns("/*");
 
-        return filterRegistrationBean;
+        return filterFilterRegistrationBean;
     }
+
 }
